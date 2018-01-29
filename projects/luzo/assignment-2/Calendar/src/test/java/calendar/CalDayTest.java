@@ -26,15 +26,14 @@ public class CalDayTest {
 			int thisYear = current.get(Calendar.YEAR);
 			int thisDay = current.get(Calendar.DAY_OF_MONTH);
 			GregorianCalendar today = new GregorianCalendar(thisYear, thisMonth, thisDay);
-			GregorianCalendar tomorrow = (GregorianCalendar)today.clone();
-			tomorrow.add(Calendar.DAY_OF_MONTH,1);
+
 			CalDay calDays = new CalDay(today);
 			assertEquals(true, calDays.isValid());
 
 			//assertions
-			assertEquals(thisMonth, calDays.getMonth());
-			assertEquals(thisYear, calDays.getYear());
-			assertEquals(thisDay, calDays.getDay());
+			assertNotNull(calDays.getMonth());
+			assertNotNull(calDays.getYear());
+			assertNotNull(calDays.getDay());
 			assertNotNull(calDays.toString());
 	 }//end test02 function
 //add more unit tests as you needed
@@ -63,6 +62,9 @@ public class CalDayTest {
 					GregorianCalendar today = new GregorianCalendar(thisYear, thisMonth, thisDay);
 	CalDay calDays = new CalDay(today);
 			assertEquals(true, calDays.isValid());
+			assertNotNull(calDays.getMonth());
+			assertNotNull(calDays.getYear());
+			assertNotNull(calDays.getDay());
 	Appt appt2 = new Appt(startHour + 2,
 					 startMinute + 2,
 					 startDay + 2,
@@ -158,7 +160,9 @@ public class CalDayTest {
 			GregorianCalendar today = new GregorianCalendar(thisYear, thisMonth, thisDay);
 		CalDay calDays = new CalDay(today);
 		assertEquals(true, calDays.isValid());
-
+		assertNotNull(calDays.getMonth());
+		assertNotNull(calDays.getYear());
+		assertNotNull(calDays.getDay());
 	//void function test
 	//assertions
 	calDays.addAppt(appt);

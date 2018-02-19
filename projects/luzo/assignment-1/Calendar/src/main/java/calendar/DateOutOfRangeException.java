@@ -7,11 +7,11 @@ package calendar;
 
 public class DateOutOfRangeException extends java.lang.Exception {
 
-    /**
-     * Creates new <code>DateOutOfRangeException</code> without detail message.
-     */
-    public DateOutOfRangeException() {
-    }
+//    /**
+//     * Creates new <code>DateOutOfRangeException</code> without detail message.
+//     */
+//    public DateOutOfRangeException() {
+//    }
 
 
     /**
@@ -22,5 +22,3 @@ public class DateOutOfRangeException extends java.lang.Exception {
         super(msg);
     }
 }
-
-

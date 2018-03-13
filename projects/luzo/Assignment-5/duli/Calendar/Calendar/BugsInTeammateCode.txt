@@ -1,0 +1,57 @@
+The first bug I found in your code is in Appt.java file.
+
+It happens as you incorrectly fix in line 121. It makes your condition as:
+
+	"if(startDay<0 || startDay>NumDaysInMonth)"
+That can be represented that "startDay = 0" can be true but not logically correct in words.
+
+And here is a relavent test for meet this bug in my code:
+Printout result:
+Running calendar.ApptTest
+	1/0/2018 at 9:30pm ,Birthday Party, This is my birthday party.
+That is totally incorrect.
+
+My suggestion to fix this is just to simply change back from "startDay<0" to "startDay<1" to prevent user type in startDay=0 as a logic error.
+
+--------------------------------------------------------------------
+
+
+The second bug I found in your code is in Appt.java file also.
+
+It happens from professor's raw code at line 113.
+
+It will make whole test file crashed accidentally as a error.
+
+Here is few lines of error message printout for this bug:
+	java.lang.ArrayIndexOutOfBoundsException: 99
+	...
+
+However, to approach the whole branch coverages in line 124, user has to type in some invalid value for testing.
+
+So, here is my suggestion to fix this bug:
+Switch order of testing if-conditions for line 121, 122 and line 124, 125.
+To first guarantee input month is correct, then generate variable "NumDaysInMonth" and enter into "startDay" test.
+
+And the code after fixing:
+
+
+int NumDaysInMonth= CalendarUtil.NumDaysInMonth(startYear,startMonth-1);
+id isValid() {
+    if(startHour<0 || startHour>23)
+        this.valid=false;
+    else
+        if(startMinute<=0 || startMinute>59)
+            this.valid=false;
+        else
+            //start fix here
+            if(startMonth<1 || startMonth>12)
+                this.valid=false;
+            else
+                int NumDaysInMonth= CalendarUtil.NumDaysInMonth(startYear,startMonth-1);
+                if(startDay<0 || startDay>NumDaysInMonth)
+                    this.valid=false;
+                //end fix here
+                else
+                    this.valid=true;
+}
+
